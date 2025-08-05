@@ -13,7 +13,7 @@ pipeline {
     stage('Checkout CD Repo') {
       steps {
         git credentialsId: 'github', 
-        url: 'https://github.com/TimilsinaSushil/DEVOPS-MERN.git',
+        url: 'https://github.com/TimilsinaSushil/cd-eks-mern.git',
         branch: 'main'
       }
     }
