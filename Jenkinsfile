@@ -1,14 +1,6 @@
 pipeline {
   agent any
 
-  environment {
-    KUBECONFIG = credentials('eks-kubeconfig') // Jenkins secret file
-    IMAGE_TAG = "${params.IMAGE_TAG ?: 'latest'}"
-  }
-
-  parameters {
-    string(name: 'IMAGE_TAG', defaultValue: 'latest', description: 'Docker image tag to deploy')
-  }
 
   stages {
     stage('Cleanup Workspace'){
@@ -53,27 +45,6 @@ pipeline {
             """
             }
         }
-    }
-
-
-    stage('Deploy to AWS EKS') {
-      steps {
-        withEnv(["KUBECONFIG=${KUBECONFIG}"]) {
-          sh """
-            kubectl apply -f k8s/frontend-deployment.yaml
-            kubectl apply -f k8s/frontend-service.yaml
-            kubectl apply -f k8s/backend-deployment.yaml
-            kubectl apply -f k8s/backend-service.yaml
-          """
-        }
-      }
-    }
-
-    stage('Verify Deployment') {
-      steps {
-        sh 'kubectl get pods'
-        sh 'kubectl get svc'
-      }
     }
   }
 
