@@ -44,7 +44,7 @@ pipeline {
 
     stage('Commit & Push Updated Manifests') {
         steps {
-            withCredentials([usernamePassword(credentialsId: 'TimilsinaSushil', usernameVariable: 'GIT_USER', passwordVariable: 'GIT_TOKEN')]) {
+            withCredentials([usernamePassword(credentialsId: 'c3a3224b-536d-4766-9275-c8264956fa5a', usernameVariable: 'GIT_USER', passwordVariable: 'GIT_TOKEN')]) {
             sh """
                 git config user.name "${GIT_USER}"
                 git config user.email "${GIT_USER}@users.noreply.github.com"
