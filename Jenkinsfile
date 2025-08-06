@@ -1,6 +1,15 @@
 pipeline {
   agent any
 
+  environment {
+    // KUBECONFIG = credentials('eks-kubeconfig') // Jenkins secret file
+    IMAGE_TAG = "${params.IMAGE_TAG ?: 'latest'}"
+  }
+
+  parameters {
+    string(name: 'IMAGE_TAG', defaultValue: 'latest', description: 'Docker image tag to deploy')
+  }
+
 
   stages {
     stage('Cleanup Workspace'){
@@ -12,7 +21,7 @@ pipeline {
         }
     stage('Checkout CD Repo') {
       steps {
-        git credentialsId: 'github', 
+        git credentialsId: 'TimilsinaSushil', 
         url: 'https://github.com/TimilsinaSushil/cd-eks-mern.git',
         branch: 'main'
       }
