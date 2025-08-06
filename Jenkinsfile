@@ -50,7 +50,7 @@ pipeline {
                 git config user.email "${GIT_USER}@users.noreply.github.com"
                 git add k8s/*.yaml
                 git commit -m "Update image tags to ${IMAGE_TAG}"
-                git push https://${GIT_USER}:${GIT_TOKEN}@github.com/TimilsinaSushil/mern-cd-eks.git HEAD:main
+                git push https://${GIT_USER}:${GIT_TOKEN}@github.com/TimilsinaSushil/cd-eks-mern.git HEAD:main
             """
             }
         }
