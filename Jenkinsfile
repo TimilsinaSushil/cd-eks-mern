@@ -59,7 +59,7 @@ pipeline {
 
   post {
     success {
-      echo "Deployment to EKS successful!"
+      echo "Deployment to EKS successful!" 
     }
     failure {
       echo "Deployment failed.Please check the logs."
