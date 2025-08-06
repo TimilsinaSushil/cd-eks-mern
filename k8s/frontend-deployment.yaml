@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: frontend-container
-          image: mern-frontend:${IMAGE_TAG}
+          image: mern-frontend:v1.0.0-39
           ports:
             - containerPort: 3000
           env:
